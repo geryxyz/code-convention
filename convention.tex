@@ -1,0 +1,222 @@
+\documentclass[11pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{paralist}
+
+\usepackage{doavoidnot}
+
+\author{Gergő Balogh}
+\title{Code Convention}
+\begin{document}
+\maketitle
+
+\chapter{C\#}
+
+\section{Capitalization styles}
+\paragraph{Pascal case} The first letter in the identifier and the first letter of each subsequent concatenated word are capitalized. \verb|PascalCase|
+\paragraph{Camel case} The first letter of an identifier is lowercase and the first letter of each subsequent concatenated word is capitalized. \verb|camelCase|
+\paragraph{Uppercase} All letters in the identifier are capitalized. \verb|UPPERCASE|
+
+\section{Naming}
+
+\domark Use pascal case if the visibility of entity is public.
+\begin{verbatim}
+public
+void Something()
+\end{verbatim}
+
+\domark Use camel case if the visibility of method, attribute, property or event is non-public.
+\begin{verbatim}
+private
+void something()
+
+internal
+void something()
+\end{verbatim}
+
+\domark Use camel case and start the identifier with an underscore (\_) if the visibility of variable is local.
+\begin{verbatim}
+internal
+void something()
+{
+    int _count;
+}
+\end{verbatim}
+
+\whymark You can use code completion to quickly list all local variables, just type the underscore sing (\_).
+
+\domark Use camel case and start the name of parameters of lambda expressions with an underscore (\_).
+\begin{verbatim}
+var foo = ( _a, _b ) => _a + _b;
+\end{verbatim}
+
+\domark Use pascal case in the name of namespaces, classes, interfaces, structures, enumerations and members of enumerations.
+
+\domark Start name of interfaces with a capital I.
+
+\domark Start name of generic type parameters with a capital T.
+\begin{verbatim}
+class ExampleClass< TValue >
+
+interface IExampleInterface
+
+enum ExampleEnum
+
+struct ExampleStruct
+\end{verbatim}
+
+\domark Use camel case in the name of parameters of methods.
+\begin{verbatim}
+void Somthing( int somethingToRead )
+\end{verbatim}
+
+\notmark Do not use Hungarian notion.
+\begin{verbatim}
+int i_foo;
+float f_foo;
+\end{verbatim}
+
+\avoidmark Avoid uncommon abbreviation. Use abbreviation, when you have no other choice.
+\begin{verbatim}
+string Idkwit = "true"; //I Don't Know What Is This
+\end{verbatim}
+
+\domark Use the same case as in their first letter of abbreviation less then three character long.
+\begin{verbatim}
+private
+void uiReader()
+
+private
+void readerUI()
+
+public
+void UIReader()
+\end{verbatim}
+
+\domark Use camel case in abbreviation more then two letters long.
+\begin{verbatim}
+private
+void umlReader()
+
+public
+void UmlReader()
+\end{verbatim}
+
+\avoidmark Avoid the using the following words, because they are too general to provide useful information.
+\begin{compactitem}
+\item data
+\item information
+\item some
+\item do
+\item make
+\end{compactitem}
+
+\notmark Do not use plural form in the name of namespaces, classes, interfaces, structures, enumerations and members of enumerations.
+\begin{verbatim}
+items
+men
+\end{verbatim}
+
+\notmark Do not put spaces inside empty parentheses.
+
+\section{Layout}
+
+\avoidmark Avoid lines longer then 80 characters. Prefer shorter lines as much as possible.
+
+\subsection{Horizontal spacing}
+
+\domark Use spaces at the inner side of all parentheses, except curly braces.
+\begin{verbatim}
+( Something< int >( _foo[ bla ] ) ) * 10
+\end{verbatim}
+
+\domark Use spaces around operators, except parentheses, point (.), increment (\verb|++|) and decrement (\verb|--|) operators.
+\begin{verbatim}
+int foo = ( ( x == 0 ) ? ( z + 3 ) : bar.some[ 42 ] )
+foo++;
+\end{verbatim}
+
+\domark Use tabs instead of spaces at the beginning of the line.
+
+\notmark Do not mix tabs and spaces at the beginning of the line.
+
+\domark Only increment the indentation level one-by-one.
+
+\subsection{Line-breaks}
+
+\domark Put curly braces in their own empty lines.
+\begin{verbatim}
+void foo()
+{
+    if( true )
+    {
+        bla++;
+    }
+}
+\end{verbatim}
+
+\domark Put member modifiers in a separate line.
+\begin{verbatim}
+public static
+void Something()
+
+private
+int count;
+\end{verbatim}
+
+\domark Write getter and setter with one or no modifier in the same line with the name of auto property.
+\begin{verbatim}
+public
+int Count{ get; private set; }
+\end{verbatim}
+
+\domark If necessary break line after equal sign (=).
+\begin{verbatim}
+int _count =
+    x + 567567563 / 2121231 + foobar;
+\end{verbatim}
+
+\domark If necessary break line before operators, except parentheses.
+\begin{verbatim}
+string _text =
+    "this is a long string need to be"
+    + "broken into seperate lines";
+
+"to write something"
+    .Let().TaggedAsInformation()
+    .Write();
+\end{verbatim}
+
+\domark Put the closing parentheses in the same line with the last parameter, except curly braces.
+
+\domark If necessary prefer to start method calls in a new line.
+
+\domark Put all or none of the parameters into separate lines.
+\begin{verbatim}
+int count =
+    AvarageOf(
+        foo,
+        bar,
+        asd );
+\end{verbatim}
+
+\subsection{Vertical spaces}
+
+\notmark Do not put empty line around opening parentheses.
+
+\domark Separate members in classes with an empty lines.
+\begin{verbatim}
+private
+int foo
+
+public
+void Something()
+\end{verbatim}
+
+\section{Commenting}
+
+\domark Prefer documenting comments (///) over general one (//).
+
+\notmark Do not use block comments (/* */).
+
+\end{document}

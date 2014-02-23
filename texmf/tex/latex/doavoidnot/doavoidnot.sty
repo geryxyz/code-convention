@@ -5,6 +5,7 @@
 
 \setlength{\fboxrule}{1pt}
 \setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
 
 \definecolor{notfg}{RGB}{217,39,39}
 \definecolor{notbg}{RGB}{255,149,149}
@@ -15,11 +16,17 @@
 \definecolor{dofg}{RGB}{91,184,47}
 \definecolor{dobg}{RGB}{181,255,137}
 
-\newcommand{\domark}{\marginpar{\raggedleft\fcolorbox{dofg}{dobg}{\textcolor{dofg}{\textsf{\textbf{do}}}}}}
-\newcommand{\avoidmark}{\marginpar{\raggedleft\fcolorbox{avoidfg}{avoidbg}{\textcolor{avoidfg}{\textsf{\textbf{avoid}}}}}}
-\newcommand{\notmark}{\marginpar{\raggedleft\fcolorbox{notfg}{notbg}{\textcolor{notfg}{\textsf{\textbf{not}}}}}}
+\newcommand{\domark}{\fcolorbox{dofg}{dobg}{\textcolor{dofg}{\textsf{\textbf{do}}}}\hspace{1ex}}
+\newcommand{\avoidmark}{\fcolorbox{avoidfg}{avoidbg}{\textcolor{avoidfg}{\textsf{\textbf{avoid}}}}\hspace{1ex}}
+\newcommand{\notmark}{\fcolorbox{notfg}{notbg}{\textcolor{notfg}{\textsf{\textbf{not}}}}\hspace{1ex}}
+
+\newcommand{\dommark}{\marginpar{\raggedleft\fcolorbox{dofg}{dobg}{\textcolor{dofg}{\textsf{\textbf{do}}}}}}
+\newcommand{\avoidmmark}{\marginpar{\raggedleft\fcolorbox{avoidfg}{avoidbg}{\textcolor{avoidfg}{\textsf{\textbf{avoid}}}}}}
+\newcommand{\notmmark}{\marginpar{\raggedleft\fcolorbox{notfg}{notbg}{\textcolor{notfg}{\textsf{\textbf{not}}}}}}
 
 \definecolor{whyfg}{RGB}{0,134,131}
 \definecolor{whybg}{RGB}{103,255,255}
 
-\newcommand{\whymark}{\marginpar{\raggedleft\fcolorbox{whyfg}{whybg}{\textcolor{whyfg}{\textsf{\textbf{why?}}}}}}
+\newcommand{\whymark}{\fcolorbox{whyfg}{whybg}{\textcolor{whyfg}{\textsf{\textbf{why?}}}}\hspace{1ex}}
+
+\newcommand{\whymmark}{\marginpar{\raggedleft\fcolorbox{whyfg}{whybg}{\textcolor{whyfg}{\textsf{\textbf{why?}}}}}}
