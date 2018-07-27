@@ -50,6 +50,11 @@ void something()
 var foo = ( _a, _b ) => _a + _b;
 \end{verbatim}
 
+\domark Use the variable name \_ (a single underscore) to denote variables in lambda expressions, which is irrelevant in the current context.
+\begin{verbatim}
+(_, _b) => _b + 1
+\end{verbatim}
+
 \domark Use pascal case in the name of namespaces, classes, interfaces, structures, enumerations and members of enumerations.
 
 \domark Start name of interfaces with a capital I.
@@ -75,6 +80,39 @@ void Somthing( int somethingToRead )
 int i_foo;
 float f_foo;
 \end{verbatim}
+
+\whymark It usually results cryptic abbreviation and types are noted and shown by Visual Studio or any other IDE.
+
+\avoidmark Avoid using single letter variable names.
+\begin{verbatim}
+//avoid
+int a;
+int b;
+
+//do
+int componentA;
+int componentB;
+\end{verbatim}
+
+\notmark Do not mark member with m\_ prefix.
+\begin{verbatim}
+int m_length //wrong
+
+int length //right
+\end{verbatim}
+
+\notmark Do not use white-spaces to construct columns in the source code. 
+\begin{verbatim}
+//do
+int length = 10;
+string name = "Thangorodrim;
+
+//wrong
+int     length  =   10;
+string  name    =   "Thangorodrim;
+\end{verbatim}
+
+\whymark It suggest structures which do not exist.
 
 \avoidmark Avoid uncommon abbreviation. Use abbreviation, when you have no other choice.
 \begin{verbatim}
@@ -102,7 +140,7 @@ public
 void UmlReader()
 \end{verbatim}
 
-\avoidmark Avoid the using the following words, because they are too general to provide useful information.
+\avoidmark Avoid the using the following words.
 \begin{compactitem}
 \item data
 \item information
@@ -111,19 +149,28 @@ void UmlReader()
 \item make
 \end{compactitem}
 
+\whymark Because they are too general to provide useful information.
+
 \notmark Do not use plural form in the name of namespaces, classes, interfaces, structures, enumerations and members of enumerations.
 \begin{verbatim}
+//wrong
 items
 men
+
+//right
+itemCollection
+manCollection
 \end{verbatim}
 
-\notmark Do not put spaces inside empty parentheses.
+\whymark It is easy to misread the plural and singular forms. Can not find irregular forms by searching singulars.
 
 \section{Layout}
 
 \avoidmark Avoid lines longer then 80 characters. Prefer shorter lines as much as possible.
 
 \subsection{Horizontal spacing}
+
+\notmark Do not put spaces inside empty parentheses.
 
 \domark Use spaces at the inner side of all parentheses, except curly braces.
 \begin{verbatim}
@@ -136,7 +183,9 @@ int foo = ( ( x == 0 ) ? ( z + 3 ) : bar.some[ 42 ] )
 foo++;
 \end{verbatim}
 
-\domark Use tabs instead of spaces at the beginning of the line.
+\domark Use spaces instead of tabs at the beginning of the line.
+
+\domark Use four spaces per each indentation level. 4 spaces = 1 tab
 
 \notmark Do not mix tabs and spaces at the beginning of the line.
 
@@ -176,7 +225,7 @@ int _count =
     x + 567567563 / 2121231 + foobar;
 \end{verbatim}
 
-\domark If necessary break line before operators, except parentheses.
+\domark If necessary break line before operators, except parentheses and assignment (=).
 \begin{verbatim}
 string _text =
     "this is a long string need to be"
@@ -188,6 +237,13 @@ string _text =
 \end{verbatim}
 
 \domark Put the closing parentheses in the same line with the last parameter, except curly braces.
+\begin{verbatim}
+int grantPermissions( 
+    string user,
+    string password,
+    int id,
+    PersmissionSet permission )
+\end{verbatim}
 
 \domark If necessary prefer to start method calls in a new line.
 
@@ -201,8 +257,6 @@ int count =
 \end{verbatim}
 
 \subsection{Vertical spaces}
-
-\notmark Do not put empty line around opening parentheses.
 
 \domark Separate members in classes with an empty lines.
 \begin{verbatim}
@@ -218,5 +272,13 @@ void Something()
 \domark Prefer documenting comments (///) over general one (//).
 
 \notmark Do not use block comments (/* */).
+
+\appendix
+
+\chapter{C\#}
+
+\section{EditorConfig for Visual Studio}
+
+For further details and \emph{some} automatic style and convention settings please use the \texttt{.editorcongif} file next to this document. It only contains Visual Studio and C\#{} specific settings. This file do not cover every details present in this documents and provided \emph{as is}.
 
 \end{document}
